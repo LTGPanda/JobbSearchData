@@ -2,42 +2,48 @@ import argparse
 from functools import wraps
 import json
 
+parser = argparse.ArgumentParser()
+parser.add_argument('-p', dest='PrintPoint', default=False, action="store_true", required=False, help="prints out some random data points")
 
-db = open('JobbGettingData/test.json','r')
+parser.add_argument('-a', dest='add', default=False, action="store_true", required=False, help="Adds item to database")
 
-data = json.load(db)
+parser.add_argument('-P', dest="PrintData", default=False, action="store_true", required=False, help="prints out database")
 
-for i in data['Jobb']:
-    print(i)
- 
-# Closing file
-db.close()
+arguments = parser.parse_args()
+
+def run(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        db = open('test.json','r')
+        data = json.load(db)
+        
+        if arguments.add:
+            print("add true")
+            AddData(data)
+        if arguments.PrintPoint:
+            print("point true")
+            PrintPoint(data)
+        if arguments.PrintData:
+            print("Data true")
+            PrintData(data)
+
+        db.close()
+
+    return wrapper
 
 
+def AddData(Data):
+    return
+
+def PrintPoint(Data):
+    return
+
+def PrintData(Data):
+    return
 
 
-# need some json labbing first
-#parser = argparse.ArgumentParser()
-#parser.add_argument('-p', dest='PrintPoint', type=str, default=False, required=False, help="prints out some random data points")
-#
-#parser.add_argument('-a', dest='add', type=str, nargs='?', default=False, required=False, help="Adds item to database")
-#
-#parser.add_argument('-P', dest="printData", type=int, nargs='?', default=0, required=False, help="prints out database")
-#
-#arguments = parser.parse_args()
-#db = open('BigDB.json', 'r')
-#
-#def run(f):
-#    @wraps(f)
-#    def wrapper(*args, **kwargs):
-#        pif = open(arguments.FileSet, 'r')
-#    return wrapper
-#
-#
-#
-#
-#@run
-#def failed():
-#    print ("Något gick fel i formationen")
-#
-#failed()
+@run
+def failed():
+    print ("Något gick fel i formationen")
+
+failed()
