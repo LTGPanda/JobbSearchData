@@ -1,18 +1,16 @@
-{
-    "Jobb": [
-        {
-            "Name": "lolxd",
-            "Where": "Din mamma",
-            "Meets": "2",
-            "Awnser": false,
-            "Gotten": false
-        },
-        {
-            "Name": "cunty",
-            "Where": "Din pappa",
-            "Meets": "55",
-            "Awnser": true,
-            "Gotten": false
-        }
-    ]
-}
+[
+    {
+        "Name": "Consid",
+        "What": "spontans\u00f6k",
+        "Meets": 0,
+        "Awnser": false,
+        "Gotten": false
+    },
+    {
+        "Name": "StickyBeats",
+        "What": "Utveklare",
+        "Meets": 1,
+        "Awnser": true,
+        "Gotten": false
+    }
+]
